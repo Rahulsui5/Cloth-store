@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData, useRouteError } from "react-router-dom";
+import clothes from "../assets/data";
 const AllCloth = () => {
-  const loaderData = useLoaderData();
-  const [cloths, setcloths] = useState([
-    ...loaderData["men"],
-    ...loaderData["women"],
-  ]);
+  const cloths = [...clothes["men"],...clothes["women"]];
   return (
       <div className="flex justify-center">
         <div className="p-6 w-full max-w-7xl">
@@ -64,10 +61,3 @@ const AllCloth = () => {
 };
 
 export default AllCloth;
-export const allClothsLoader = async () => {
-  const res = await fetch("http://localhost:5000/clothes");
-  if (!res.ok) {
-    throw Error("Invalid API");
-  }
-  return res.json();
-};

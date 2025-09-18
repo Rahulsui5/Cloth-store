@@ -1,5 +1,5 @@
-{
-  "clothes": {
+
+const  clothes= {
     "men": [
       {
         "id": 1,
@@ -159,4 +159,4 @@
       }
     ]
   }
-}
+export default clothes

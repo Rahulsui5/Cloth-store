@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Error from "./Error";
+import clothes from "../assets/data";
 const ClothDetails = () => {
-const loader= useLoaderData();
-const allClothes = [...loader.men, ...loader.women];
+const allClothes = [...clothes.men, ...clothes.women];
 const {id}=useParams()
 const cloth=allClothes.find((c)=>c.id===Number(id))
 if(!cloth){
@@ -73,10 +73,3 @@ const [selectedSize, setSelectedSize] = useState(size?.[0] || "");
 };
 
 export default ClothDetails;
-export const clothsDetailsLoader = async () => {
-  const res = await fetch("http://localhost:5000/clothes");
-  if (!res.ok) {
-    throw Error("Invalid API");
-  }
-  return res.json();
-};
